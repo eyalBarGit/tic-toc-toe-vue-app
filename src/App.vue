@@ -8,11 +8,12 @@
 </template>
 
 <script>
-import "./style/style.scss";
-const backgroundImg = require("./assets/gradient_background.jpg");
+import './style/style.scss';
+
+const backgroundImg = require('./assets/gradient_background.jpg');
 
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
       background: backgroundImg,
@@ -22,13 +23,12 @@ export default {
     getStyle() {
       return {
         backgroundImage: `url(${this.background})`,
-        ["background-size"]: "cover",
+        'background-size': 'cover',
       };
     },
   },
 };
 </script>
-
 
 <style lang="scss">
 </style>

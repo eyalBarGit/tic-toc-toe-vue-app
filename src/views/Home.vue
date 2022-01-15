@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import Hero from "../components/Hero/Hero.vue";
+import Hero from '../components/Hero/Hero.vue';
 // @ is an alias to /src
 export default {
-  name: "Home",
+  name: 'Home',
   components: { Hero },
 };
 </script>

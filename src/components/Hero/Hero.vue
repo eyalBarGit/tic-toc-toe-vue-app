@@ -15,10 +15,10 @@
 
 <script>
 export default {
-  name: "Hero",
+  name: 'Hero',
   methods: {
     playAi() {
-      this.$router.push({ name: "AiGame", params: { roomId: 123 } });
+      this.$router.push({ name: 'AiGame', params: { roomId: 123 } });
     },
   },
 };
