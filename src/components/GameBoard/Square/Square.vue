@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     onSquareClick() {
-      if (this.currSquare.isClicked) return;
+      if (this.currSquareCopy.isClicked) return;
       this.currSquareCopy.isClicked = true;
       this.currSquareCopy.shape = this.getCurrentShapeTurn;
       this.$emit('clickOnSquare', this.currSquareCopy);
