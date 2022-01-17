@@ -4,7 +4,7 @@
       class="flex justify-center"
       @click="onSquareClick"
   >
-    <div v-if="!currSquareCopy.isClicked" class="h-24 w-24"></div>
+    <div v-if="!currSquare.isClicked" class="h-24 w-24"></div>
     <img v-else class="w-2/4 object-contain" :src="imgSrc" alt="imgSrc"/>
   </div>
 </template>
@@ -27,25 +27,34 @@ export default {
   data() {
     return {
       imgSrc: '',
-      currSquareCopy: {...this.currSquare},
     };
   },
-
+  watch: {
+    currSquare: {
+      handler(n, o) {
+        this.getImgSrc;
+      },
+    },
+  },
   computed: {
     ...mapGetters(['getCurrentShapeTurn']),
     getImgSrc() {
-      return this.currSquareCopy.shape === SQUARE_TYPE.O
-          ? this.setImgSrc(SQUARE_TYPE.O)
-          : this.setImgSrc(SQUARE_TYPE.X);
+      return this.currSquare.shape === SQUARE_TYPE.X
+          ? this.setImgSrc(SQUARE_TYPE.X)
+          : this.setImgSrc(SQUARE_TYPE.O);
+    },
+    createClickedSquare() {
+      return {
+        ..._.cloneDeep(this.currSquare),
+        shape: this.getCurrentShapeTurn,
+        isClicked: true,
+      };
     },
   },
   methods: {
     onSquareClick() {
-      if (this.currSquareCopy.isClicked) return;
-      this.currSquareCopy.isClicked = true;
-      this.currSquareCopy.shape = this.getCurrentShapeTurn;
-      this.$emit('clickOnSquare', this.currSquareCopy);
-      this.getImgSrc;
+      if (this.currSquare.isClicked) return;
+      this.$emit('clickOnSquare', this.createClickedSquare);
     },
     setImgSrc(shape) {
       return this.imgSrc = require(`@/assets/${shape}.png`);

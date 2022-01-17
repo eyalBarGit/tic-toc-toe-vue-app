@@ -4,7 +4,7 @@
     <div
         class="p-10 h-full flex flex-col items-center justify-center "
     >
-      <GameBoard class="h-4/6 md:h-full w-full game-board flex  flex-grow-0 "/>
+      <GameBoard class="h-4/6 md:h-full w-full game-board flex  flex-grow-0 bg-indigo-100 bg-opacity-25 rounded-2xl"/>
     </div>
     <div class="h-20 w-full"></div>
   </div>
