@@ -23,9 +23,9 @@ const actions = {
     commit('toggleModal');
   },
   addPlayerMoves({commit, state}, playerMoves) {
-    console.log('playerMoves:', playerMoves);
     commit('addMove', playerMoves);
-    commit('onSetShape', playerMoves);
+    commit('updateBoardOnPlayerMove', playerMoves);
+
   },
 
   addAiMoves({commit}, aiMoves) {
@@ -58,6 +58,7 @@ const mutations = {
     state.isModal = !state.isModal;
   },
   addMove(state, playerMoves) {
+
     state.players[playerMoves.shape].positions.push(
         playerMoves.clickedPosition,
     );
@@ -93,9 +94,10 @@ const mutations = {
   createBoard(state, payload) {
     state.board = payload;
   },
-  onSetShape(state, payload) {
-    state.board[payload.clickedPosition] = payload;
-    console.log('payload:',  payload);
+  updateBoardOnPlayerMove(state, playerMoves) {
+    const newBoard = _.cloneDeep(state.board);
+    newBoard.splice(playerMoves.clickedPosition, 1, playerMoves);
+    state.board = newBoard;
   },
 };
 const getters = {
