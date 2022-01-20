@@ -35,15 +35,9 @@ export default {
             imgSrc: '',
         };
     },
-    watch: {
-        currSquare: {
-            handler(n, o) {
-                return this.getImgSrc;
-            },
-        },
-    },
+
     computed: {
-        ...mapGetters(['getCurrentShapeTurn']),
+        ...mapGetters('gameStore',['getCurrentShapeTurn']),
         getImgSrc() {
             return this.currSquare.shape === SQUARE_TYPE.X
                 ? this.setImgSrc(SQUARE_TYPE.X)
@@ -56,6 +50,13 @@ export default {
                 shape: this.getCurrentShapeTurn,
                 isClicked: true,
             };
+        },
+    },
+    watch: {
+        currSquare: {
+            handler(n, o) {
+                return this.getImgSrc;
+            },
         },
     },
     methods: {

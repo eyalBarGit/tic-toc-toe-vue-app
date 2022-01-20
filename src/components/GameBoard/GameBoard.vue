@@ -14,7 +14,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-
 const SquareItem = () => import('./SquareItem/SquareItem.vue');
 
 export default {
@@ -22,7 +21,8 @@ export default {
     components: {SquareItem},
   
     computed: {
-        ...mapGetters(['getCurrentShapeTurn', 'getBoard']),
+        ...mapGetters('boardStore',[ 'getBoard']),
+        ...mapGetters('gameStore',['getCurrentShapeTurn']),
     },
 
     created() {
@@ -30,10 +30,12 @@ export default {
     },
 
     methods: {
-        ...mapActions(['onCreateBoard', 'addPlayerMoves', 'onChangeCurrentShapeTurn']),
+        ...mapActions('gameStore',[ 'addPlayerMoves', 'onChangeCurrentShapeTurn']),
+        ...mapActions('boardStore',['onCreateBoard','onUpdateBoard']),
         clickOnSquare(currSquare) {
             console.log('shape:',currSquare);
             this.addPlayerMoves(currSquare);
+            this.onUpdateBoard(currSquare);
             this.onChangeCurrentShapeTurn();
         },
         setSquareBorders(squareClass ) {
@@ -50,7 +52,7 @@ export default {
             return squareClasses[ squareClass];
         },
     },
-  
+
 
 };
 </script>
