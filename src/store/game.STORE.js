@@ -1,4 +1,4 @@
-import {checkWin, selectAiPosition, createBoard} from '@/service/gameService';
+import {checkWin, selectAiPosition} from '@/service/gameService';
 import {loadFromStorage} from '@/service/utils';
 
 const state = loadFromStorage('gameData')?.gameStore || {
@@ -14,7 +14,6 @@ const state = loadFromStorage('gameData')?.gameStore || {
             positions: [],
         },
     },
-    board: [],
     winner: '',
     isAiTurn: false,
 };
@@ -25,8 +24,6 @@ const actions = {
     addPlayerMoves({commit}, playerMoves) {
         console.log('playerMoves:',playerMoves);
         commit('addMove', playerMoves);
-        commit('updateBoardOnPlayerMove', playerMoves);
-
     },
 
     addAiMoves({commit}, aiMoves) {
@@ -49,10 +46,7 @@ const actions = {
     onChangeCurrentShapeTurn({commit}) {
         commit('changeCurrentShapeTurn');
     },
-    onCreateBoard({commit}) {
-        const board = createBoard();
-        commit('createBoard', board);
-    },
+
 
 };
 const mutations = {
@@ -93,14 +87,6 @@ const mutations = {
             },
         };
     },
-    createBoard(state, payload) {
-        state.board = payload;
-    },
-    updateBoardOnPlayerMove(state, playerMoves) {
-        const newBoard = _.cloneDeep(state.board);
-        newBoard.splice(playerMoves.clickedPosition, 1, playerMoves);
-        state.board = newBoard;
-    },
 };
 const getters = {
     getPlayers(state) {
@@ -115,15 +101,13 @@ const getters = {
     getCurrentShapeTurn(state) {
         return state.activeShape;
     },
-    getBoard(state) {
-        return state.board;
-    },
     getStore(state) {
         return state;
     },
 };
 
 export default {
+    namespaced:true,
     state,
     mutations,
     getters,
