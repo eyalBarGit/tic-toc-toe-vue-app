@@ -1,3 +1,4 @@
+
 const winPositions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -8,14 +9,14 @@ const winPositions = [
     [0, 3, 6],
     [0, 4, 8]];
 
-export function checkWin(shape, positions) {
+export function checkWin(shape, playerPositions) {
     let winner;
     winPositions.forEach((currentWinPosition) => {
-        if (currentWinPosition.every((number) => (positions.includes(number)))) {
+        if (currentWinPosition.every((number) => (playerPositions.includes(number)))) {
             winner = shape;
         }
     });
-    if (positions.length === 5 && !winner) {
+    if (playerPositions.length === 5 && !winner) {
         winner = 'Tie';
     }
     return winner;

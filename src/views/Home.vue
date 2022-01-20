@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="text-red-500 text-6xl">hi</div>
+    <div class="text-red-500 text-6xl">
+      hi
+    </div>
     <Hero />
   </div>
 </template>
@@ -9,7 +11,7 @@
 import Hero from '../components/Hero/Hero.vue';
 // @ is an alias to /src
 export default {
-  name: 'Home',
-  components: { Hero },
+    name: 'Home',
+    components: { Hero },
 };
 </script>

@@ -9,6 +9,7 @@ import _ from 'lodash';
 Vue.config.productionTip = false;
 Object.defineProperty(Vue.prototype, '_', { value: _ });
 
+
 new Vue({
     router,
     store,
