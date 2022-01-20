@@ -17,7 +17,6 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import _ from 'lodash';
 
 const SQUARE_TYPE = {
     X: 'X',
@@ -39,7 +38,6 @@ export default {
     watch: {
         currSquare: {
             handler(n, o) {
-                console.log('currSquare:',this.currSquare);
                 return this.getImgSrc;
             },
         },

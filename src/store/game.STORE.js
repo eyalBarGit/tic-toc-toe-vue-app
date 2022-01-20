@@ -100,7 +100,6 @@ const mutations = {
         const newBoard = _.cloneDeep(state.board);
         newBoard.splice(playerMoves.clickedPosition, 1, playerMoves);
         state.board = newBoard;
-        console.log('board:',state.board);
     },
 };
 const getters = {
