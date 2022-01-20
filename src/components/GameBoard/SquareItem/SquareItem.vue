@@ -1,0 +1,73 @@
+<template>
+  <div
+    class="flex justify-center"
+    @click="onSquareClick"
+  >
+    <div
+      v-if="!currSquare.isClicked"
+      class="h-24 w-24"
+    />
+    <img
+      v-else
+      class="w-2/4 object-contain"
+      :src="imgSrc"
+      alt="imgSrc"
+    >
+  </div>
+</template>
+<script>
+import { mapGetters } from 'vuex';
+import _ from 'lodash';
+
+const SQUARE_TYPE = {
+    X: 'X',
+    O: 'O',
+};
+export default {
+    name: 'SquareItem',
+    props: {
+        currSquare: {
+            type: Object,
+            required: true,
+        },
+    },
+    data() {
+        return {
+            imgSrc: '',
+        };
+    },
+    watch: {
+        currSquare: {
+            handler(n, o) {
+                console.log('currSquare:',this.currSquare);
+                return this.getImgSrc;
+            },
+        },
+    },
+    computed: {
+        ...mapGetters(['getCurrentShapeTurn']),
+        getImgSrc() {
+            return this.currSquare.shape === SQUARE_TYPE.X
+                ? this.setImgSrc(SQUARE_TYPE.X)
+                : this.setImgSrc(SQUARE_TYPE.O);
+        },
+        createClickedSquare() {
+            const currSquare=JSON.parse(JSON.stringify(this.currSquare));
+            return {
+                ...currSquare,
+                shape: this.getCurrentShapeTurn,
+                isClicked: true,
+            };
+        },
+    },
+    methods: {
+        onSquareClick() {
+            if (this.currSquare.isClicked) return;
+            this.$emit('clickOnSquare', this.createClickedSquare);
+        },
+        setImgSrc(shape) {
+            return (this.imgSrc = require(`@/assets/${shape}.png`));
+        },
+    },
+};
+</script>
