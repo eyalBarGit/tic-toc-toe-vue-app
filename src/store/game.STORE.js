@@ -22,15 +22,14 @@ const actions = {
         commit('toggleModal');
     },
     addPlayerMoves({commit}, playerMoves) {
-        console.log('playerMoves:',playerMoves);
         commit('addMove', playerMoves);
     },
 
     addAiMoves({commit}, aiMoves) {
         commit('addMove', aiMoves);
     },
-    checkWin({commit}, playerMoves) {
-        const winner = checkWin(playerMoves.shape, playerMoves.positions);
+    checkWin({commit}, {shape, positions}) {
+        const winner = checkWin(shape, positions);
         if (winner) {
             commit('setWinner', winner);
             commit('setModal');
@@ -54,7 +53,6 @@ const mutations = {
         state.isModal = !state.isModal;
     },
     addMove(state, playerMoves) {
-
         state.players[playerMoves.shape].positions.push(
             playerMoves.clickedPosition,
         );

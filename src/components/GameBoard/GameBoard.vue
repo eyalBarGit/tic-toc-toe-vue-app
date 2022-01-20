@@ -9,33 +9,34 @@
       class="cursor-pointer"
       @clickOnSquare="clickOnSquare"
     />
+    <Modal v-if="getWinner" />
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 const SquareItem = () => import('./SquareItem/SquareItem.vue');
-
+const Modal = ()=>import('@/components/Modal/Modal');
 export default {
     name: 'GameBoard',
-    components: {SquareItem},
-  
+    components: {Modal, SquareItem},
+
     computed: {
         ...mapGetters('boardStore',[ 'getBoard']),
-        ...mapGetters('gameStore',['getCurrentShapeTurn']),
+        ...mapGetters('gameStore',['getCurrentShapeTurn','getPlayers','getWinner']),
     },
 
     created() {
         this.onCreateBoard();
     },
-
     methods: {
-        ...mapActions('gameStore',[ 'addPlayerMoves', 'onChangeCurrentShapeTurn']),
+        ...mapActions('gameStore',[ 'addPlayerMoves', 'onChangeCurrentShapeTurn','checkWin']),
         ...mapActions('boardStore',['onCreateBoard','onUpdateBoard']),
+
         clickOnSquare(currSquare) {
-            console.log('shape:',currSquare);
             this.addPlayerMoves(currSquare);
             this.onUpdateBoard(currSquare);
+            this.checkWin({shape:this.getCurrentShapeTurn,positions:this.getPlayers[this.getCurrentShapeTurn].positions});
             this.onChangeCurrentShapeTurn();
         },
         setSquareBorders(squareClass ) {
