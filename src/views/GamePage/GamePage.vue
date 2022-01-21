@@ -8,9 +8,9 @@
       </div>
     </div>
 
-    <div class="h-full w-full flex flex-col justify-center">
+    <div class="h-full w-full flex justify-center align-center ">
       <GameBoard
-        class="h-4/5 lg:h-2/4 w-4/4 lg:h-2/4 flex flex-grow-0 bg-indigo-100 bg-opacity-25 rounded-2xl"
+        class="h-4/5 lg:h-2/4 w-4/4 lg:w-2/4 flex flex-grow-0 bg-indigo-100 bg-opacity-25 rounded-2xl"
       />
     </div>
     <div class="h-20 w-full" />

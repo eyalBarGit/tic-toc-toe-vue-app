@@ -22,18 +22,18 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 export default {
-    name: 'Modal',
-    computed: {
-        ...mapGetters('gameStore',['getWinner']),
-    },
-    methods: {
-        ...mapActions('gameStore',['restartGame', 'onResetSquare','']),
-        ...mapActions('boardStore',[ 'onCreateBoard']),
-        onRestartGame(){
-            this.restartGame();
-            this.onCreateBoard();
-        }
-    },
+  name: 'Modal',
+  computed: {
+    ...mapGetters('gameStore',['getWinner']),
+  },
+  methods: {
+    ...mapActions('gameStore',['restartGame', 'onResetSquare','']),
+    ...mapActions('boardStore',[ 'onCreateBoard']),
+    onRestartGame(){
+      this.restartGame();
+      this.onCreateBoard();
+    }
+  },
 };
 </script>
 
