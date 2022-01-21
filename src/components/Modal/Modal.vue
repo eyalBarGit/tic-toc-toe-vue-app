@@ -7,7 +7,10 @@
           Winner is: <span>{{ getWinner }}</span>
         </p>
         <div>
-          <button @click="onRestartGame">
+          <button
+            class="bg-green-400 font-semibold text-xl text-white rounded w-full"
+            @click="onRestartGame"
+          >
             Restart Game
           </button>
         </div>
@@ -59,15 +62,9 @@ export default {
       padding: 35px 0;
       width: 70%;
       button {
-        width: 100%;
         height: 45px;
-        border-radius: 5px;
-        background-color: rgb(118, 214, 142);
-        font-weight: 600;
-        font-size: 20px;
-        color: #fff;
         &:hover {
-          background-color: rgb(109, 194, 130);
+          background-color: #a3ffa3;
         }
       }
     }

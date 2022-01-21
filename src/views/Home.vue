@@ -1,15 +1,16 @@
 <template>
-  <div>
+  <div class="h-full">
     <div class="text-red-500 text-6xl">
       hi
     </div>
-    <Hero />
+    <div class="flex justify-center h-full items-center">
+      <Hero class="w-5/6 border border-green-500" />
+    </div>
   </div>
 </template>
 
 <script>
 import Hero from '../components/Hero/Hero.vue';
-// @ is an alias to /src
 export default {
     name: 'Home',
     components: { Hero },

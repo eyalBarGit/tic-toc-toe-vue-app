@@ -1,7 +1,6 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    font-family: $baseFont;
     &:focus{
         outline: none;
     }
@@ -29,18 +28,21 @@ body {
     cursor: pointer;
     height: 50px;
     color: #ffffff;
-    width: 70px;
+    width: 150px;
     font-weight: 100;
-    background-color: $Black;
+    background-color: black;
     text-decoration: none;
     text-align: center;
     outline: none;
     border: none;
+    font-weight: 500;
+    border-radius: 15px;
     &:active {
-        transform: scale(0.999);
+        transform: scale(0.95);
     }
     &:hover {
-        background-color: $Very-Dark-Gray;
+        background-color: white;
+        color:black
     }
     :focus {
         outline: none;
