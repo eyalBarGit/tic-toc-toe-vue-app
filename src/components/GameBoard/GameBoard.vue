@@ -22,6 +22,7 @@ import { mapGetters, mapActions } from 'vuex';
 import FadeTransition from '@/components/FadeTransition';
 const SquareItem = () => import('./SquareItem/SquareItem.vue');
 const Modal = () => import('@/components/Modal/Modal');
+import {selectAiPosition} from '@/service/gameService';
 
 export default {
   name: 'GameBoard',
@@ -59,7 +60,9 @@ export default {
       this.onChangeCurrentShapeTurn();
     },
     onPlayAiTurn() {
-      this.clickOnSquare({});
+      this.clickOnSquare({
+        clickedPositions :this.getPlayers[this.getCurrentShapeTurn].positions
+      });
     },
     setSquareBorders(squareClass) {
       const squareClasses = {

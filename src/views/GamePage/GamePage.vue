@@ -14,7 +14,7 @@
       />
     </div>
 
-    <div class="h-20 w-full" />
+    <div class="h-20 w-full"/>
   </div>
 </template>
 
