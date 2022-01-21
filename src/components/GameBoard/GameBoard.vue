@@ -51,11 +51,15 @@ export default {
     clickOnSquare(currSquare) {
       this.addPlayerMoves(currSquare);
       this.onUpdateBoard(currSquare);
+      console.log('po:', currSquare);
       this.checkWin({
         shape: this.getCurrentShapeTurn,
         positions: this.getPlayers[this.getCurrentShapeTurn].positions
       });
       this.onChangeCurrentShapeTurn();
+    },
+    onPlayAiTurn() {
+      this.clickOnSquare({});
     },
     setSquareBorders(squareClass) {
       const squareClasses = {
