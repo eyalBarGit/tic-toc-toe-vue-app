@@ -9,7 +9,7 @@ import { mapGetters } from 'vuex';
 
 const SQUARE_TYPE = {
   X: 'X',
-  O: 'O',
+  O: 'O'
 };
 
 export default {
@@ -17,12 +17,12 @@ export default {
   props: {
     currSquare: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      imgSrc: '',
+      imgSrc: ''
     };
   },
 
@@ -41,16 +41,16 @@ export default {
       return {
         ...currSquare,
         shape: this.getCurrentShapeTurn,
-        isClicked: true,
+        isClicked: true
       };
-    },
+    }
   },
   watch: {
     currSquare: {
       handler(n, o) {
         return this.getImgSrc;
-      },
-    },
+      }
+    }
   },
   methods: {
     onSquareClick() {
@@ -59,8 +59,8 @@ export default {
     },
     setImgSrc(shape) {
       return (this.imgSrc = require(`@/assets/${shape}.png`));
-    },
-  },
+    }
+  }
 };
 </script>
 
