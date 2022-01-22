@@ -34,7 +34,9 @@ export default {
         : this.setImgSrc(SQUARE_TYPE.O);
     },
     aA() {
-      return { a: 'a' };
+      return {
+        a: 'a' 
+      };
     },
     createClickedSquare() {
       const currSquare = JSON.parse(JSON.stringify(this.currSquare));

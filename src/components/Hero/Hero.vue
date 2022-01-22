@@ -24,12 +24,16 @@
 
 <script>
 export default {
-    name: 'HeroHomePage',
-    methods: {
-        playAi() {
-            this.$router.push({ name: 'AiGame', params: { roomId: 123 } });
-        },
-    },
+  name: 'HeroHomePage',
+  methods: {
+    playAi() {
+      this.$router.push({
+        name: 'AiGame', params: {
+          roomId: 123 
+        } 
+      });
+    }
+  }
 };
 </script>
 

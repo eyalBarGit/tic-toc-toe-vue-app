@@ -26,7 +26,9 @@ import {selectAiPosition} from '@/service/gameService';
 
 export default {
   name: 'GameBoard',
-  components: { FadeTransition, Modal, SquareItem },
+  components: {
+    FadeTransition, Modal, SquareItem 
+  },
 
   computed: {
     ...mapGetters('boardStore', ['getBoard']),

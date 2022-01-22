@@ -24,7 +24,12 @@
     "block-spacing": ["error","always"],
     "space-infix-ops": ["error", { "int32Hint": true }],
     "comma-spacing": ["error",{"before": false,"after": true}],
-    "switch-colon-spacing": ["error",{"after": false, "before": false}]
-
+    "switch-colon-spacing": ["error",{"after": false, "before": false}],
+    "object-curly-newline": ["error",{
+      "ObjectExpression": "always",
+      "ObjectPattern": { "multiline": true },
+      "ImportDeclaration": "never",
+      "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+    }]
   }
 }
