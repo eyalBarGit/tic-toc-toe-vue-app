@@ -28,7 +28,8 @@ export default {
   methods: {
     playAi() {
       this.$router.push({
-        name: 'AiGame', params: {
+        name: 'AiGame',
+        params: {
           roomId: 123 
         } 
       });

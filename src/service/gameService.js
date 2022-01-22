@@ -67,7 +67,9 @@ export const createBoard = (numberOfSquares = 9) => {
   const arr = [];
   for (let i = 0; i < numberOfSquares; i++) {
     arr.push({
-      clickedPosition: i, shape: '', isClicked: false
+      clickedPosition: i,
+      shape: '',
+      isClicked: false
     });
   }
   return arr;
