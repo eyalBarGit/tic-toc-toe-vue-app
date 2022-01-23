@@ -1,39 +1,42 @@
 <template>
-  <div class="win-modal-background">
-    <div class="modal-window flex justify-center">
-      <div class="modal flex flex-col justify-between">
-        <h1>Game Over!</h1>
-        <p class="winner">
-          Winner is: <span>{{ getWinner }}</span>
-        </p>
-        <div>
-          <button
-            class="bg-green-400 font-semibold text-xl text-white rounded w-full"
-            @click="onRestartGame"
-          >
-            Restart Game
-          </button>
+    <div class="win-modal-background">
+        <div class="modal-window flex justify-center">
+            <div class="modal flex flex-col justify-between">
+                <h1>Game Over!</h1>
+                <p class="winner">
+                    {{getWinnerMessage}}
+                </p>
+                <div>
+                    <button
+                        class="bg-green-400 font-semibold text-xl text-white rounded w-full"
+                        @click="onRestartGame"
+                    >
+                        Restart Game
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
 export default {
-  name: 'Modal',
-  computed: {
-    ...mapGetters('gameStore', ['getWinner'])
-  },
-  methods: {
-    ...mapActions('gameStore', ['restartGame', 'onResetSquare', '']),
-    ...mapActions('boardStore', [ 'onCreateBoard']),
-    onRestartGame(){
-      this.restartGame();
-      this.onCreateBoard();
+    name: 'Modal',
+    computed: {
+        ...mapGetters('gameStore', ['getWinner']),
+        getWinnerMessage(){
+            return this.getWinner === 'Tie' ? 'It\'s a Tie!' : 'Winner is: ' + this.getWinner;
+        }
+    },
+    methods: {
+        ...mapActions('gameStore', ['restartGame', 'onResetSquare', '']),
+        ...mapActions('boardStore', [ 'onCreateBoard']),
+        onRestartGame(){
+            this.restartGame();
+            this.onCreateBoard();
+        }
     }
-  }
 };
 </script>
 
