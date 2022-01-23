@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["eslint:recommended", "plugin:vue/recommended", "prettier"],
+  "extends": ["eslint:recommended", "plugin:vue/recommended"],
   "settings": {
     "vue": {
       "version": "detect"
@@ -15,16 +15,38 @@
   },
   "plugins": ["vue"],
   "rules": {
-    "indent": ["error", 2],
+    "indent": ["warn", 2, { "SwitchCase": 1, "ignoredNodes": ["TemplateLiteral"] }],
     "linebreak-style": ["error", "windows"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "comma-dangle": ["error", "never"],
-    "arrow-spacing": ["error",{ "before": true, "after": true }],
-    "block-spacing": ["error","always"],
+    "arrow-spacing": ["error", { "before": true, "after": true }],
+    "block-spacing": ["error", "never"],
     "space-infix-ops": ["error", { "int32Hint": true }],
-    "comma-spacing": ["error",{"before": false,"after": true}],
-    "switch-colon-spacing": ["error",{"after": false, "before": false}]
-
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "switch-colon-spacing": ["error", { "after": true, "before": true }],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": { "multiline": true },
+        "ImportDeclaration": "never",
+        "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+      }
+    ],
+    "object-property-newline": [2, { "allowAllPropertiesOnSameLine": false }],
+    "no-irregular-whitespace": [
+      "error",
+      {
+        "skipStrings": false,
+        "skipComments": false,
+        "skipRegExps": false,
+        "skipTemplates": false
+      }
+    ],
+    "function-paren-newline": ["error", "never"],
+    "vue/no-unused-vars": "warn",
+    "vue/no-side-effects-in-computed-properties": "warn",
+    "vue/html-indent": ["warn", 4]
   }
 }

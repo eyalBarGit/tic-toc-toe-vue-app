@@ -2,10 +2,10 @@ import {createBoard} from '@/service/gameService';
 
 const state = {
   board:[]
-  
+
 };
 const actions = {
-  onUpdateBoard({commit},playerMoves){
+  onUpdateBoard({commit}, playerMoves){
     commit('updateBoardOnPlayerMove', playerMoves);
   },
   onCreateBoard({commit}) {
