@@ -7,8 +7,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 
-    modules: {
-        gameStore,
-        boardStore
-    },
+  modules: {
+    gameStore,
+    boardStore
+  }
 });
